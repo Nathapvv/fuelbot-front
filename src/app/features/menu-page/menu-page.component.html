@@ -1,0 +1,171 @@
+<div class="flex flex-col w-full min-h-screen p-6 bg-white dark:bg-gray-900">
+  <!-- Bouton Retour -->
+  <app-back-button></app-back-button>
+
+  <!-- Profil Utilisateur -->
+  <div class="flex flex-col items-center space-y-2">
+    <!-- Avatar -->
+    <img src="../3DDD-3.png" alt="Avatar" class="w-32 rounded-full" />
+    <!-- Nom -->
+    <p class="text-lg font-semibold text-gray-800 dark:text-gray-100">
+      {{ userService.getUser()?.prenom ?? "ERROR" | uppercase }}
+      {{ userService.getUser()?.nom ?? "ERROR" | uppercase }}
+    </p>
+    <!-- Bouton Modifier Profil -->
+    <button
+      (click)="goToUserModify()"
+      class="px-3 py-1 text-sm border rounded-full text-primary-700 border-primary-500 dark:text-primary-300 dark:border-primary-400 hover:bg-primary-100 dark:hover:bg-primary-900"
+    >
+      Modifier mon profil
+    </button>
+  </div>
+
+  <!-- Séparateur -->
+  <div class="w-full my-4 border-b dark:border-gray-700"></div>
+
+  <!-- Menu -->
+  <div class="flex flex-col w-full space-y-4">
+    <!-- Portefeuille -->
+    <div
+      [routerLink]="['./wallet']"
+      class="flex items-center space-x-3 text-gray-800 cursor-pointer dark:text-gray-100 hover:text-primary-600 dark:hover:text-primary-400"
+    >
+      <span class="text-xl">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M21 12a2.25 2.25 0 0 0-2.25-2.25H15a3 3 0 1 1-6 0H5.25A2.25 2.25 0 0 0 3 12m18 0v6a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 18v-6m18 0V9M3 12V9m18 0a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 9m18 0V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v3"
+          />
+        </svg>
+      </span>
+      <span>Mon portefeuille</span>
+    </div>
+
+    <!-- Commandes -->
+    <div
+      [routerLink]="['./orders']"
+      class="flex items-center space-x-3 text-gray-800 cursor-pointer dark:text-gray-100 hover:text-primary-600 dark:hover:text-primary-400"
+    >
+      <span class="text-xl">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 3.75 9.375v-4.5ZM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 0 1-1.125-1.125v-4.5ZM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 13.5 9.375v-4.5Z"
+          />
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6.75 6.75h.75v.75h-.75v-.75ZM6.75 16.5h.75v.75h-.75v-.75ZM16.5 6.75h.75v.75h-.75v-.75ZM13.5 13.5h.75v.75h-.75v-.75ZM13.5 19.5h.75v.75h-.75v-.75ZM19.5 13.5h.75v.75h-.75v-.75ZM19.5 19.5h.75v.75h-.75v-.75ZM16.5 16.5h.75v.75h-.75v-.75Z"
+          />
+        </svg>
+      </span>
+      <span>Mes commandes</span>
+    </div>
+
+    <!-- Paramètres -->
+    <div
+      [routerLink]="['./settings']"
+      class="flex items-center space-x-3 text-gray-800 cursor-pointer dark:text-gray-100 hover:text-primary-600 dark:hover:text-primary-400"
+    >
+      <span class="text-xl">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75"
+          />
+        </svg>
+      </span>
+      <span>Paramètres</span>
+    </div>
+
+    <!-- Mode sombre / clair -->
+    <div
+      (click)="darkModeService.toggleDarkMode()"
+      class="flex items-center space-x-3 text-gray-800 cursor-pointer dark:text-gray-100 hover:text-primary-600 dark:hover:text-primary-400"
+    >
+      <span class="text-xl">
+        <svg
+          *ngIf="darkModeService.isDarkMode()"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"
+          />
+        </svg>
+        <svg
+          *ngIf="!darkModeService.isDarkMode()"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z"
+          />
+        </svg>
+      </span>
+      <span>{{
+        darkModeService.isDarkMode() ? "Mode clair" : "Mode sombre"
+      }}</span>
+    </div>
+
+    <!-- Déconnexion -->
+    <div
+      (click)="logout()"
+      class="flex items-center space-x-3 text-gray-800 cursor-pointer dark:text-gray-100 hover:text-red-600 dark:hover:text-red-400"
+    >
+      <span class="text-xl">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15"
+          />
+        </svg>
+      </span>
+      <span>Se déconnecter</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="flex flex-col w-full min-h-screen p-6 bg-white dark:bg-gray-900">
+  <!-- Bouton Retour -->
+  <app-back-button></app-back-button>
+
+  <div class="w-2/3 max-w-sm py-6 mx-auto">
+    <div class="mb-4 text-lg font-medium text-black dark:text-white">
+      Mon portefeuille
+    </div>
+
+    <div
+      class="p-6 mb-6 text-white bg-gradient-to-r from-blue-500 to-blue-400 dark:from-blue-700 dark:to-blue-600 rounded-2xl"
+    >
+      <div class="mb-2 text-sm">Mon solde</div>
+      <div class="text-2xl font-semibold">
+        {{ wallet | number : "1.2-2" }} €
+      </div>
+    </div>
+
+    <div
+      (click)="addWallet()"
+      class="flex items-center mb-4 space-x-3 text-black cursor-pointer dark:text-white hover:text-primary-600 dark:hover:text-primary-400"
+    >
+      <span class="text-2xl"
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 4.5v15m7.5-7.5h-15"
+          />
+        </svg>
+      </span>
+      <span>Ajouter de l’argent</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,126 @@
+<div class="flex flex-col w-full min-h-screen p-6 bg-white dark:bg-gray-900">
+  <!-- Bouton Retour -->
+  <app-back-button></app-back-button>
+  <div
+    class="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-white p-4 flex flex-col items-center"
+  >
+    <!-- Loader -->
+    <div
+      id="loader"
+      class="flex flex-col items-center justify-center h-full"
+      *ngIf="!stationDetails"
+    >
+      <svg
+        class="animate-spin h-10 w-10 text-blue-600 mb-4"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <circle
+          class="opacity-25"
+          cx="12"
+          cy="12"
+          r="10"
+          stroke="currentColor"
+          stroke-width="4"
+        ></circle>
+        <path
+          class="opacity-75"
+          fill="currentColor"
+          d="M4 12a8 8 0 018-8v4l3-3-3-3v4a8 8 0 100 16v-4l-3 3 3 3v-4a8 8 0 01-8-8z"
+        />
+      </svg>
+      <p class="text-sm text-gray-500 dark:text-gray-400">
+        Chargement des informations de la station...
+      </p>
+    </div>
+
+    <!-- Contenu principal -->
+    <div id="station-content" *ngIf="stationDetails">
+      <!-- Station Info -->
+      <div class="text-center mb-6">
+        <h1 class="text-xl font-semibold">{{ stationDetails.name }}</h1>
+        <p class="text-sm text-gray-500 dark:text-gray-400">
+          {{ stationDetails.city }}
+        </p>
+      </div>
+
+      <!-- Type de carburant -->
+      <div class="w-full">
+        <h2 class="text-sm font-medium mb-2">
+          Sélectionner votre type de carburant
+        </h2>
+        <div class="flex space-x-4 overflow-x-auto scrollbar-hide pb-2">
+          <!-- Fuel Card -->
+          <div
+            *ngFor="let item of stationDetails.fuels"
+            (click)="updateSelectedGaz(item)"
+            [ngClass]="
+              selectedGaz?.id === item.id
+                ? 'border-green-500 dark:border-green-700'
+                : 'border-gray-300 dark:border-gray-700'
+            "
+            class="flex-none w-24 h-24 bg-white dark:bg-gray-800 cursor-pointer rounded-xl border flex flex-col items-center justify-center shadow-md"
+          >
+            <div class="text-2xl">⛽</div>
+            <div class="font-bold mt-1 text-xs text-center">
+              {{ item.short_name ?? item.name }}
+            </div>
+            <div class="text-xs text-gray-500 dark:text-gray-400">
+              {{ item.Price.text }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Prix ou quantité -->
+        <div class="mt-8 text-center max-w-xs mx-auto">
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+            Sélectionner le prix ou le montant de carburant
+          </p>
+
+          <div class="flex flex-col gap-4">
+            <!-- Prix -->
+            <div>
+              <label class="block text-sm mb-1">Montant (€)</label>
+              <input
+                type="number"
+                class="w-full p-2 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-black dark:text-white"
+                [(ngModel)]="price"
+                (input)="onPriceChange()"
+                placeholder="Ex: 10"
+              />
+            </div>
+
+            <!-- Quantité -->
+            <div>
+              <label class="block text-sm mb-1">Quantité (L)</label>
+              <input
+                type="number"
+                class="w-full p-2 rounded border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-black dark:text-white"
+                [(ngModel)]="liters"
+                (input)="onLitersChange()"
+                placeholder="Ex: 5"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Bouton continuer -->
+        <div class="mt-8 w-full">
+          <button
+            [disabled]="!price || !selectedGaz"
+            (click)="validatePurchase()"
+            [ngClass]="
+              !price || !selectedGaz
+                ? 'bg-gray-500 '
+                : 'bg-green-600 hover:bg-green-700'
+            "
+            class="w-full text-white font-semibold py-3 rounded-xl shadow transition"
+          >
+            Continuer
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
