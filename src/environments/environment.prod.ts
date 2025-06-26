@@ -1,6 +1,6 @@
 export const environment = {
-  production: false,
+  production: true,
   appName: 'Fuelbot',
   appVersion: '1.0.0',
-  apiUrl: 'https://api.monsite.com',
+  apiUrl: 'https://fuelbot-back-production.up.railway.app',
 };
