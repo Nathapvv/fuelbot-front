@@ -3,7 +3,7 @@ export const environment = {
   production: false,
   appName: 'Fuelbot',
   appVersion: '1.0.0',
-  apiUrl: 'http://localhost:8080/api/',
+  apiUrl: 'https://fuelbot-back-production.up.railway.app/api',
   mapKey: 'AfhVmSOCE8MNjkQSXqdZ',
   // Config popup
   toastTimer: 1500,
