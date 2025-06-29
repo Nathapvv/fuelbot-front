@@ -27,22 +27,28 @@ export class ApiService {
     motDePasse: string
   ): Observable<any> {
     const url = `${
-      this.user.getUserSetting('apiUrl') + this.baseUrlUser
+      environment.apiUrl + this.baseUrlUser
     }/create?nom=${nom}&prenom=${prenom}&email=${email}&motDePasse=${motDePasse}`;
     const body = { nom, prenom, email, motDePasse };
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    console.log('API Request - URL:', url);
+    console.log('API Request - Body:', body);
 
     return this.http.post(url, body, { headers });
   }
 
   login(email: string, motDePasse: string): Observable<any> {
     const url =
-      `${this.user.getUserSetting('apiUrl') + this.baseUrlUser}/login?email=` +
+      `${environment.apiUrl + this.baseUrlUser}/login?email=` +
       email +
       '&motDePasse=' +
       motDePasse;
     const body = { email, motDePasse };
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    console.log('API Request - URL:', url);
+    console.log('API Request - Body:', body);
 
     return this.http.post(url, body, { headers });
   }
@@ -50,7 +56,7 @@ export class ApiService {
   getNearbyStations(lat: Number, lon: Number) {
     const url =
       `${
-        this.user.getUserSetting('apiUrl') + this.baseUrlStation
+        environment.apiUrl + this.baseUrlStation
       }/nearbyStations?lat=` +
       lat +
       '&lon=' +
@@ -63,7 +69,7 @@ export class ApiService {
   getStationDetails(id: string) {
     const url =
       `${
-        this.user.getUserSetting('apiUrl') + this.baseUrlStation
+        environment.apiUrl + this.baseUrlStation
       }/stationDetails?id=` + id;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
@@ -72,7 +78,7 @@ export class ApiService {
 
   resetPassword(email: string) {
     const url = `${
-      this.user.getUserSetting('apiUrl') + this.baseUrlUser
+      environment.apiUrl + this.baseUrlUser
     }/reset-password?email=${email}`;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
@@ -85,7 +91,7 @@ export class ApiService {
   createOrder(stationId: Number, fuelType: string, fuelQuantity: number) {
     const utilisateurId = this.user.getUser().idUtilisateur;
     const url = `${
-      this.user.getUserSetting('apiUrl') + this.baseUrlOrder
+      environment.apiUrl + this.baseUrlOrder
     }/createOrder`;
     const body = { utilisateurId, stationId, fuelType, fuelQuantity };
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -96,7 +102,7 @@ export class ApiService {
   getOrders() {
     const userId = this.user.getUser().idUtilisateur;
     const url =
-      `${this.user.getUserSetting('apiUrl') + this.baseUrlOrder}/user?userId=` +
+      `${environment.apiUrl + this.baseUrlOrder}/user?userId=` +
       userId;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
@@ -107,7 +113,7 @@ export class ApiService {
     const userId = this.user.getUser().idUtilisateur;
     const url =
       `${
-        this.user.getUserSetting('apiUrl') + this.baseUrlWallet
+        environment.apiUrl + this.baseUrlWallet
       }/solde?userId=` + userId;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
@@ -117,7 +123,7 @@ export class ApiService {
   deposit(amount: number) {
     const userId = this.user.getUser().idUtilisateur;
     const url = `${
-      this.user.getUserSetting('apiUrl') + this.baseUrlWallet
+      environment.apiUrl + this.baseUrlWallet
     }/deposit`;
     const body = { userId, amount };
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
@@ -128,7 +134,7 @@ export class ApiService {
   updateUser(update: any) {
     const userMail = this.user.getUser().email;
     const url = `${
-      this.user.getUserSetting('apiUrl') + this.baseUrlUser
+      environment.apiUrl + this.baseUrlUser
     }/update/${userMail}`;
     const body = update;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
