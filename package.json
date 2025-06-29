@@ -12,6 +12,7 @@
     "start:debug": "echo '=== DEBUG START ===' && echo 'PORT:' $PORT && echo 'PWD:' $(pwd) && echo 'FILES:' && ls -la && echo 'DIST:' && ls -la dist/ && echo 'DIST/FUELBOT:' && ls -la dist/fuelbot-frontend/ && echo '=== STARTING SERVER ===' && npx http-server dist/fuelbot-frontend -p $PORT -a 0.0.0.0 -c-1",
     "start:minimal": "npx http-server dist/fuelbot-frontend -p 4200 -a 0.0.0.0 -c-1 --cors",
     "start:python": "python3 -m http.server 4200 --bind 0.0.0.0 --directory dist/fuelbot-frontend",
+    "start:force": "HOST=0.0.0.0 npx http-server dist/fuelbot-frontend -p 4200 -c-1 --cors",
     "build": "ng build --configuration production",
     "build:dev": "ng build --configuration development",
     "watch": "ng build --watch --configuration development",
