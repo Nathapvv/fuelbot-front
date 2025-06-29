@@ -7,7 +7,7 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "echo '=== FINAL START ===' && echo 'PORT:' $PORT && echo 'PWD:' $(pwd) && echo 'DIST EXISTS:' && ls -la dist/fuelbot-frontend/ && echo 'STARTING SERVER ON 4200' && npx http-server dist/fuelbot-frontend -p 4200 -a 0.0.0.0 -c-1 --cors --silent",
+    "start": "echo 'HELLO FROM START SCRIPT' && ls -la && echo 'DIST FOLDER:' && ls -la dist/ && echo 'STARTING SERVER' && npx http-server dist/fuelbot-frontend -p 4200 -a 0.0.0.0",
     "start:simple": "echo 'Starting simple server' && npx http-server dist/fuelbot-frontend -p $PORT -a 0.0.0.0",
     "start:debug": "echo '=== DEBUG START ===' && echo 'PORT:' $PORT && echo 'PWD:' $(pwd) && echo 'FILES:' && ls -la && echo 'DIST:' && ls -la dist/ && echo 'DIST/FUELBOT:' && ls -la dist/fuelbot-frontend/ && echo '=== STARTING SERVER ===' && npx http-server dist/fuelbot-frontend -p $PORT -a 0.0.0.0 -c-1",
     "start:minimal": "npx http-server dist/fuelbot-frontend -p 4200 -a 0.0.0.0 -c-1 --cors",
