@@ -7,7 +7,7 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "echo '=== DEBUG ===' && ls -la dist/fuelbot-frontend/ && echo '=== STARTING SERVER ===' && npx http-server dist/fuelbot-frontend/browser -p $PORT -a 0.0.0.0 --cors",
+    "start": "echo '=== DEBUG ===' && echo 'Current directory:' && pwd && echo 'Dist folder:' && ls -la dist/ && echo 'Fuelbot folder:' && ls -la dist/fuelbot-frontend/ && echo '=== STARTING SERVER ===' && npx http-server dist/fuelbot-frontend -p $PORT -a 0.0.0.0 --cors",
     "build": "ng build --configuration production",
     "build:dev": "ng build --configuration development",
     "watch": "ng build --watch --configuration development",
