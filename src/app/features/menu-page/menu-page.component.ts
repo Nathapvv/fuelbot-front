@@ -21,16 +21,10 @@ export class MenuPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // Debug: Vérifier l'état de l'utilisateur
+    // Vérifier si l'utilisateur est connecté
     const user = this.userService.getUser();
-    console.log('🔍 MenuPage - User data:', user);
-    console.log('🔍 MenuPage - SessionStorage:', sessionStorage.getItem('user'));
-    
     if (!user) {
-      console.log('❌ MenuPage - No user found, redirecting to login');
       this.router.navigate(['/login']);
-    } else {
-      console.log('✅ MenuPage - User found:', user.prenom, user.nom);
     }
   }
 
