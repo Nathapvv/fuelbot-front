@@ -1,0 +1,10 @@
+node_modules
+.git
+.gitignore
+README.md
+android
+ios
+capacitor.config.ts
+*.log
+.DS_Store
+.angular 
