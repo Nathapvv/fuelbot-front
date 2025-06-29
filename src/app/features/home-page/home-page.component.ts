@@ -20,33 +20,13 @@ export class HomePageComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {
-    // 1. Retour arrière
-    window.addEventListener('popstate', () => {
-      console.log('🔁 Refresh via popstate');
-      window.location.reload();
-    });
-
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationStart) {
-        console.log('➡️ NavigationStart vers :', event.url);
-        window.location.reload();
-      }
-
-      if (event instanceof NavigationEnd) {
-        console.log('✅ NavigationEnd vers :', event.urlAfterRedirects);
-        window.location.reload();
-      }
-
-      if (event instanceof NavigationCancel) {
-        console.warn('❌ Navigation annulée');
-        window.location.reload();
-      }
-    });
+    // Code de navigation supprimé car il causait des rechargements de page
   }
 
   goToMenu(): void {
     this.router.navigate(['/user']);
   }
+  
   onSearch(): void {
     if (this.searchQuery.trim()) {
       this.router.navigate(['/search'], {
