@@ -8,11 +8,8 @@ import { UserService } from './user.service';
   providedIn: 'root', // Permet d'utiliser le service partout dans l'application
 })
 export class ApiService {
-  constructor(private http: HttpClient, private user: UserService) {
-    // Debug: Afficher l'URL API utilisée
-    console.log('🔍 API Service - Environment API URL:', environment.apiUrl);
-    console.log('🔍 API Service - Environment production:', environment.production);
-  }
+  constructor(private http: HttpClient, private user: UserService) {}
+  
   private baseUrlUser = 'utilisateur'; // URL du backend
   private baseUrlStation = 'stations'; // URL du backend
   private baseUrlOrder = 'orders';
