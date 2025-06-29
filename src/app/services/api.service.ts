@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { UserService } from './user.service';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root', // Permet d'utiliser le service partout dans l'application
@@ -64,7 +65,23 @@ export class ApiService {
       lon;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    return this.http.get(url, { headers });
+    console.log('🗺️ Requête nearbyStations:', url);
+
+    return this.http.get(url, { 
+      headers,
+      // Ajouter un timeout pour éviter les requêtes qui traînent
+      timeout: 10000 // 10 secondes
+    }).pipe(
+      // Gestion d'erreur améliorée
+      catchError((error) => {
+        console.error('❌ Erreur nearbyStations:', error);
+        if (error.status === 499) {
+          console.warn('⚠️ Requête annulée par le client (499)');
+        }
+        // Retourner un observable vide pour ne pas casser l'application
+        return of([]);
+      })
+    );
   }
 
   getStationDetails(id: string) {
