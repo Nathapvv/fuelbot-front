@@ -1,9 +1,13 @@
 {
   "name": "fuelbot-frontend",
   "version": "0.0.0",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
   "scripts": {
     "ng": "ng",
-    "start": "npm run build && npx http-server dist/fuelbot-frontend -p $PORT",
+    "start": "npm run build && npx serve dist/fuelbot-frontend -p $PORT",
     "build": "ng build --configuration production",
     "build:dev": "ng build --configuration development",
     "watch": "ng build --watch --configuration development",
@@ -23,7 +27,6 @@
     "@capacitor/angular": "^2.0.3",
     "@capacitor/core": "latest",
     "fuelbot-frontend": "file:",
-    "http-server": "^14.1.1",
     "ol": "^10.5.0",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.17.2",
