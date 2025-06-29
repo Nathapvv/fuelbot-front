@@ -1,9 +1,9 @@
 export const environment = {
   // Config de l'application NON MODIFIABLE
-  production: false,
+  production: true,
   appName: 'Fuelbot',
   appVersion: '1.0.0',
-  apiUrl: 'https://fuelbot-back-production.up.railway.app/api',
+  apiUrl: 'https://fuelbot-back-production.up.railway.app/api/',
   mapKey: 'AfhVmSOCE8MNjkQSXqdZ',
   // Config popup
   toastTimer: 1500,

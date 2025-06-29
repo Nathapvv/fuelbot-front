@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { BackButtonComponent } from '../../components/back-button/back-button.component';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-search-page',
@@ -36,7 +37,7 @@ export class SearchPageComponent implements OnInit {
   }
 
   search(): void {
-    const url = `http://localhost:8080/api/stations/search?query=${encodeURIComponent(
+    const url = `${environment.apiUrl}stations/search?query=${encodeURIComponent(
       this.query
     )}${this.selectedFuel ? `&fuelType=${this.selectedFuel}` : ''}`;
 
