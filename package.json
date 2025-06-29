@@ -7,7 +7,7 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "echo '=== STARTING SERVER ===' && echo 'PORT variable:' $PORT && echo 'Current directory:' $(pwd) && echo 'Dist folder contents:' && ls -la dist/fuelbot-frontend/ && echo 'Starting server on port: 4200' && npx serve dist/fuelbot-frontend -p 4200",
+    "start": "echo '=== STARTING SERVER ===' && echo 'PORT variable:' $PORT && echo 'Current directory:' $(pwd) && echo 'Dist folder contents:' && ls -la dist/fuelbot-frontend/ && echo 'Starting server on port:' $PORT && npx serve dist/fuelbot-frontend -p $PORT -a 0.0.0.0",
     "build": "ng build --configuration production",
     "build:dev": "ng build --configuration development",
     "watch": "ng build --watch --configuration development",
