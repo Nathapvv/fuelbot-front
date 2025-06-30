@@ -18,10 +18,8 @@ export class UserService {
       try {
         return JSON.parse(localStorage.getItem('user')!);
       } catch (err) {
-        this.logout();
+        return null;
       }
-    } else {
-      this.logout();
     }
     return null;
   }
@@ -29,6 +27,10 @@ export class UserService {
   logout() {
     localStorage.removeItem('user');
     window.location.href = '/';
+  }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('user');
   }
 
   getUserSetting(key: keyof typeof environment): any {

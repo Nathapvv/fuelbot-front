@@ -21,9 +21,7 @@ export class MenuPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // Vérifier si l'utilisateur est connecté
-    const user = this.userService.getUser();
-    if (!user) {
+    if (!this.userService.isLoggedIn()) {
       this.router.navigate(['/login']);
     }
   }
