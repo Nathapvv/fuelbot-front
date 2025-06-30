@@ -21,9 +21,7 @@ export class MenuPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    if (!this.userService.isLoggedIn()) {
-      this.router.navigate(['/login']);
-    }
+    // Redirection supprimée, gérée par le guard
   }
 
   goToUserModify() {
