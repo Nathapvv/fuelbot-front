@@ -56,7 +56,7 @@ export class UserModificationComponent implements OnInit {
       const data = this.profileForm.getRawValue();
       this.apiService.updateUser(data).subscribe({
         next: (value) => {
-          sessionStorage.setItem('user', JSON?.stringify(value));
+          localStorage.setItem('user', JSON?.stringify(value));
           this.popupService.fire({
             icon: 'success',
             title: 'Succès de la mise à jour',

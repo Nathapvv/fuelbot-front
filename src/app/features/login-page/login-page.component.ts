@@ -56,7 +56,7 @@ export class LoginPageComponent implements OnInit {
 
     this.apiService.login(this.email, this.password).subscribe({
       next: (user) => {
-        sessionStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('user', JSON.stringify(user));
         this.router.navigate(['/home']);
         this.popupService.fire({
           toast: true,

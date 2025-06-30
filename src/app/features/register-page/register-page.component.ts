@@ -75,7 +75,7 @@ export class RegisterPageComponent {
       .subscribe({
         next: (user) => {
           this.isLoading = false;
-          sessionStorage.setItem('user', JSON.stringify(user));
+          localStorage.setItem('user', JSON.stringify(user));
 
           this.router.navigate(['/home']);
           this.popupService.fire({

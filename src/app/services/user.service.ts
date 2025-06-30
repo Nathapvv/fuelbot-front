@@ -14,9 +14,9 @@ export class UserService {
   }
 
   getUser() {
-    if (sessionStorage.getItem('user') != null) {
+    if (localStorage.getItem('user') != null) {
       try {
-        return JSON.parse(sessionStorage.getItem('user')!);
+        return JSON.parse(localStorage.getItem('user')!);
       } catch (err) {
         this.logout();
       }
@@ -27,7 +27,7 @@ export class UserService {
   }
 
   logout() {
-    sessionStorage.removeItem('user');
+    localStorage.removeItem('user');
     window.location.href = '/';
   }
 
