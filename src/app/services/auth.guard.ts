@@ -9,6 +9,7 @@ export class AuthGuard implements CanActivate {
   canActivate(route: any, state: any): boolean | UrlTree {
     const isLoggedIn = this.userService.isLoggedIn();
     const url: string = state.url;
+    console.log('[GUARD] isLoggedIn:', isLoggedIn, 'url:', url, 'user:', localStorage.getItem('user'));
 
     // Si l'utilisateur est connecté, il ne doit pas accéder à /login ou /register
     if (isLoggedIn && (url === '/login' || url === '/register')) {
